@@ -1,4 +1,3 @@
-# zero_explanation_opencv
 OpenCV snippets that may come in handy. No explanation, no understanding. No remorse, no regret.
 
 ## Create the environment with conda
