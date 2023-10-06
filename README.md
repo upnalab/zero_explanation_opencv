@@ -27,29 +27,31 @@ Now you can open the snippets as:
 spyder nameOfSnippet.py &
 ```
 
-##videoLoop
+## Snippets
 
-##basicImage1
+### videoLoop
 
-##basicImage2
+### basicImage1
 
-##inputSliders
+### basicImage2
 
-##inputMouse
+### inputSliders
 
-##faceAndEyesHaar
+### inputMouse
 
-##detectGreenBlob
+### faceAndEyesHaar
 
-##detectGreenBlobWorldCoords
+### detectGreenBlob
 
-##arucos2D
+### detectGreenBlobWorldCoords
+
+### arucos2D
 genArucos
 
-##cameraCalibration
+### cameraCalibration
 cameraCalib_1captureFrames
 cameraCalib_2calcParams
 
-##arucos3D
+### arucos3D
 
-##handsMediapipe
+### handsMediapipe
