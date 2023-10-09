@@ -8,7 +8,6 @@ conda create --name cvtest python=3.9
 conda activate cvtest
 pip install opencv-python
 pip install matplotlib
-pip install mediapipe
 ```
 
 Installing an IDE for editing the snippets (optional), it will take forever:
@@ -68,7 +67,13 @@ Run cameraCalib_1captureFrames to capture some frames of the calibration sheet f
 Run cameraCalib_2calcParams  to process the frames in ./calibFrames/.jpg and calculate the coefficients. It will output the undistorted frames in the same folder.
 
 ### arucos3D
-
+uses the camera calibration parameters to provide position and rotation 3D vectors for the detected arucos
 
 ### handsMediapipe
+Requires to run: pip install mediapipe
 Minimum code to track the hands and draw their joints along their indices.
+
+### yolov5
+Ideally use another environment
+Requires to run: pip install yolov5
+and then: yolov5 detect
