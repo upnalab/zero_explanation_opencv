@@ -11,7 +11,7 @@ pip install matplotlib
 pip install mediapipe
 ```
 
-This one is optional and will take forever:
+Installing an IDE for editing the snippets (optional), it will take forever:
 ```console
 pip install spyder
 ```
@@ -22,10 +22,11 @@ git clone https://github.com/upnalab/zero_explanation_opencv/
 cd zero_explanation_opencv/
 ```
 
-Now you can open the snippets as:
+Now you can edit the snippets as:
 ```console
 spyder nameOfSnippet.py &
 ```
+Or just run them with: python nameOfSnippet.py
 
 ## Snippets
 
