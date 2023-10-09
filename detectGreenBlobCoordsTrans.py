@@ -23,8 +23,8 @@ cv2.setMouseCallback("camera", clickOnCamera)
 
 
 # define the lower and upper of "green" in the HSV color space
-filterBottom = (87, 200, 115)
-filterTop = (93, 255, 160)
+filterBottom = (55, 40, 95)
+filterTop = (90, 110, 150)
 
 cap = cv2.VideoCapture(0)        
 while(True):

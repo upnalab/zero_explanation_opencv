@@ -1,11 +1,10 @@
 import cv2
 import cv2.aruco as aruco
  
- 
 cap = cv2.VideoCapture(0)
 
 aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_100)
-parameters =  aruco.DetectorParameters_create()
+parameters = aruco.DetectorParameters_create()
 cv2.startWindowThread()
  
 while(True):
@@ -15,11 +14,12 @@ while(True):
     corners, ids, rejectedImgPoints = aruco.detectMarkers(
             gray, aruco_dict, parameters=parameters)
     
-    #ids contains the id the detected arucos. corners their camera coordinates. 
+    #ids contains the id of the detected arucos. 
+    #corners their camera coordinates. 
     
-    gray = aruco.drawDetectedMarkers(gray, corners, ids)
+    aruco.drawDetectedMarkers(frame, corners, ids)
+    cv2.imshow('frame',frame)
     
-    cv2.imshow('frame',gray)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
  
