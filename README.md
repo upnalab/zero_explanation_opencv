@@ -75,5 +75,7 @@ Minimum code to track the hands and draw their joints along their indices.
 
 ### yolov5
 Ideally use another environment
-Requires to run: pip install yolov5
-and then: yolov5 detect
+```console
+pip install yolov5
+python -m yolov5.detect --source 0
+```
