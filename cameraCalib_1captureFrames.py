@@ -9,7 +9,7 @@ if not os.path.exists(DIR_NAME):
     os.makedirs(DIR_NAME)    
     
 path = "./" + DIR_NAME + "/"
-nImages = len( glob.glob(path + '\\*.jpg') )
+nImages = len( glob.glob(path + '/*.jpg') )
 
 cv2.namedWindow('camera')
 cap = cv2.VideoCapture(0)
