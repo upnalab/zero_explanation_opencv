@@ -72,10 +72,3 @@ uses the camera calibration parameters to provide position and rotation 3D vecto
 ### handsMediapipe
 Requires to run: pip install mediapipe
 Minimum code to track the hands and draw their joints along their indices.
-
-### yolov5
-Ideally use another environment
-```console
-pip install yolov5
-python -m yolov5.detect --source 0
-```
