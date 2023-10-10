@@ -10,8 +10,10 @@ MARKER_SIZE = 0.03 #3cm adjust
 
 cap = cv2.VideoCapture(0)
 
-aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_100)
-parameters = aruco.DetectorParameters_create()
+dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
+parameters =  aruco.DetectorParameters()
+detector = aruco.ArucoDetector(dictionary, parameters)
+
 cv2.startWindowThread()
 
 while(True):
@@ -19,7 +21,7 @@ while(True):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     corners, ids, rejectedImgPoints = aruco.detectMarkers(
-            gray, aruco_dict, parameters=parameters)
+            gray, dictionary, parameters=parameters)
     
     gray = aruco.drawDetectedMarkers(gray, corners, ids)
     cv2.imshow('frame',gray)
