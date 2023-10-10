@@ -3,8 +3,10 @@ import cv2.aruco as aruco
  
 cap = cv2.VideoCapture(0)
 
-aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_100)
-parameters = aruco.DetectorParameters_create()
+dictionary = aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
+parameters =  aruco.DetectorParameters()
+detector = aruco.ArucoDetector(dictionary, parameters)
+
 cv2.startWindowThread()
  
 while(True):
@@ -12,7 +14,7 @@ while(True):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     corners, ids, rejectedImgPoints = aruco.detectMarkers(
-            gray, aruco_dict, parameters=parameters)
+            gray, dictionary, parameters=parameters)
     
     #ids contains the id of the detected arucos. 
     #corners their camera coordinates. 
