@@ -16,21 +16,37 @@ detector = aruco.ArucoDetector(dictionary, parameters)
 
 cv2.startWindowThread()
 
+#from https://stackoverflow.com/questions/75750177/solve-pnp-or-estimate-pose-single-markers-which-is-better
+def estimatePoseSingleMarkers(corners, marker_size, mtx, distortion):
+    marker_points = np.array([[-marker_size / 2, marker_size / 2, 0],
+                              [marker_size / 2, marker_size / 2, 0],
+                              [marker_size / 2, -marker_size / 2, 0],
+                              [-marker_size / 2, -marker_size / 2, 0]], dtype=np.float32)
+    trash = []
+    rvecs = []
+    tvecs = []
+    i = 0
+    for c in corners:
+        nada, R, t = cv2.solvePnP(marker_points, corners[i], mtx, distortion, False, cv2.SOLVEPNP_IPPE_SQUARE)
+        rvecs.append(R)
+        tvecs.append(t)
+        trash.append(nada)
+    return rvecs, tvecs, trash
+
 while(True):
     ret, frame = cap.read() 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
-    corners, ids, rejectedImgPoints = aruco.detectMarkers(
-            gray, dictionary, parameters=parameters)
+    corners, ids, rejectedCandidates = detector.detectMarkers(frame)
     
     gray = aruco.drawDetectedMarkers(gray, corners, ids)
     cv2.imshow('frame',gray)
     
     
-    rvecs, tvecs, _objPoints = aruco.estimatePoseSingleMarkers(corners, 
-                                                               MARKER_SIZE, 
-                                                               mtx, 
-                                                               dist)
+    rvecs, tvecs, _objPoints = estimatePoseSingleMarkers(corners, 
+                                                         MARKER_SIZE, 
+                                                         mtx, 
+                                                         dist)
     #tvecs and rvecs are 3D in respect to the camera
     if (rvecs is not None) and (tvecs is not None):
         print("Positions ", tvecs, " rotations ", rvecs)
