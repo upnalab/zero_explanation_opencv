@@ -1,7 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 
-aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_100)
+dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
 max_marker_id = 100
 
 marker_size = 200  # Marker size in pixels
@@ -14,7 +14,7 @@ for row in range(num_rows):
     for col in range(num_cols):
         marker_id = row * num_cols + col
         if marker_id <= max_marker_id:
-            marker_img = cv2.aruco.drawMarker(aruco_dict, marker_id, marker_size)
+            marker_img = dictionary.generateImageMarker(marker_id, marker_size)
             axes[row, col].imshow(marker_img, cmap='gray')
             axes[row, col].axis('off')
 
