@@ -13,8 +13,7 @@ while(True):
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
-    corners, ids, rejectedImgPoints = aruco.detectMarkers(
-            gray, dictionary, parameters=parameters)
+    corners, ids, rejectedCandidates = detector.detectMarkers(frame)
     
     #ids contains the id of the detected arucos. 
     #corners their camera coordinates. 
